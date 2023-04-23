@@ -20,10 +20,11 @@ public static class IServiceCollectionExtension
         return services;
     }
 
-    public static IServiceCollection AddCosmosRepositories(this IServiceCollection services)
+    public static IServiceCollection AddCosmosRepositories(this IServiceCollection services, Assembly assembly)
     {
-        var repositoryTypes = Assembly.GetAssembly(typeof(BaseRepository<>))?.GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(BaseRepository<>)));
+        var repositoryTypes = assembly.GetTypes()
+            .Where(t => t.IsClass && !t.IsAbstract && t.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IRepository<>)));
+        var nonBaseRepositories = repositoryTypes.Where(t => t != typeof(BaseRepository<>));
         if (repositoryTypes is null)
         {
             return services;
@@ -31,13 +32,14 @@ public static class IServiceCollectionExtension
 
         foreach (var repositoryType in repositoryTypes)
         {
-            var entityType = repositoryType.BaseType?.GetGenericArguments()[0];
-            if (entityType is null)
+            var interfaces = repositoryType.GetInterfaces()
+                .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRepository<>))
+                .ToList();
+            if (interfaces.Count != 1)
             {
                 continue;
             }
-            services.AddScoped(repositoryType);
-            services.AddScoped(typeof(IRepository<>).MakeGenericType(entityType), provider => provider.GetRequiredService(repositoryType));
+            services.AddScoped(interfaces[0], repositoryType);
         }
         return services;
     }
