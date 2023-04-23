@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository", "Drea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos", "DreamBig.Repository.Cosmos\DreamBig.Repository.Cosmos.csproj", "{7376E069-46BF-4E25-BEA6-2B3BACB162C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos.Tests", "DreamBig.Repository.Cosmos.Tests\DreamBig.Repository.Cosmos.Tests.csproj", "{AF21BB7A-2F66-422D-9E50-36A67E0F2C4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Generators", "DreamBig.Repository.Generators\DreamBig.Repository.Generators.csproj", "{0AFE15D5-8479-47CF-8E08-64D6878C0652}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +26,9 @@ Global
 		{7376E069-46BF-4E25-BEA6-2B3BACB162C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7376E069-46BF-4E25-BEA6-2B3BACB162C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7376E069-46BF-4E25-BEA6-2B3BACB162C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF21BB7A-2F66-422D-9E50-36A67E0F2C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF21BB7A-2F66-422D-9E50-36A67E0F2C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF21BB7A-2F66-422D-9E50-36A67E0F2C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF21BB7A-2F66-422D-9E50-36A67E0F2C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AFE15D5-8479-47CF-8E08-64D6878C0652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AFE15D5-8479-47CF-8E08-64D6878C0652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AFE15D5-8479-47CF-8E08-64D6878C0652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AFE15D5-8479-47CF-8E08-64D6878C0652}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
