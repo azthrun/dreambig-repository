@@ -1,11 +1,11 @@
 ﻿using System.Collections.Immutable;
 using System.Text;
-using DreamBig.Repository.Generators.Models;
+using DreamBig.Repository.Cosmos.Generators.Models;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace DreamBig.Repository.Generators;
+namespace DreamBig.Repository.Cosmos.Generators;
 
 [Generator]
 public sealed class RepoGenerator : IIncrementalGenerator

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository", "Drea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos", "DreamBig.Repository.Cosmos\DreamBig.Repository.Cosmos.csproj", "{7376E069-46BF-4E25-BEA6-2B3BACB162C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Generators", "DreamBig.Repository.Generators\DreamBig.Repository.Generators.csproj", "{0AFE15D5-8479-47CF-8E08-64D6878C0652}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos.Generators", "DreamBig.Repository.Cosmos.Generators\DreamBig.Repository.Cosmos.Generators.csproj", "{0AFE15D5-8479-47CF-8E08-64D6878C0652}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
