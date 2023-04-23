@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DreamBig.Repository.Cosmos;
 
-public abstract class BaseProvider : IProvider<CosmosClient, Database>
+public class BaseProvider : IProvider<CosmosClient, Database>
 {
     private readonly CosmosClient cosmosClient;
     private string? databaseId;
