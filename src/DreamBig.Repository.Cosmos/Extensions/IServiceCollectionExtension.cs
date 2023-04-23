@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-using System.Linq;
-using DreamBig.Repository.Abstractions;
+﻿using DreamBig.Repository.Abstractions;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace DreamBig.Repository.Cosmos.Extensions;
 

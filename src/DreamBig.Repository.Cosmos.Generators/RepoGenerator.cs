@@ -1,27 +1,29 @@
-﻿using System.Collections.Immutable;
-using System.Text;
-using DreamBig.Repository.Cosmos.Generators.Models;
+﻿using DreamBig.Repository.Cosmos.Generators.Models;
+using DreamBig.Repository.Exceptions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
+using System.Collections.Immutable;
+using System.Text;
 
 namespace DreamBig.Repository.Cosmos.Generators;
 
 [Generator]
 public sealed class RepoGenerator : IIncrementalGenerator
 {
+    private const string AttributeResourceName = "DreamBig.Repository.Cosmos.Generators.Templates.UseRepoAttribute.cs";
+    private const string RepoResourceName = "DreamBig.Repository.Cosmos.Generators.Templates._TheEntity_Repository.cs";
+    private const string AttributeFullQualifiedName = "DreamBig.Repository.Cosmos.Attributes.UseRepoAttribute";
+
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
-            "UseFastRepoAttribute.g.cs",
-            SourceText.From("", Encoding.UTF8)
-            ));
+        GenerateAttribute(context);
 
         IncrementalValuesProvider<ClassDeclarationSyntax> classDeclarations
             = context.SyntaxProvider
             .CreateSyntaxProvider(
                 predicate: static (s, _) => IsSyntaxTargetForGeneration(s),
-                transform: static (ctx, _) => GetSemantricTargetForGeneration(ctx)
+                transform: static (ctx, _) => GetSemanticTargetForGeneration(ctx)
                 )
             .Where(static m => m is not null)!;
 
@@ -33,10 +35,23 @@ public sealed class RepoGenerator : IIncrementalGenerator
             );
     }
 
+    private static void GenerateAttribute(IncrementalGeneratorInitializationContext context)
+    {
+        using Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(AttributeResourceName)
+            ?? throw new RepositoryException("Embedded resource not found");
+        using StreamReader reader = new(stream);
+        var attributeCodes = reader.ReadToEnd();
+
+        context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
+            "UseRepoAttribute.g.cs",
+            SourceText.From(attributeCodes, Encoding.UTF8)
+            ));
+    }
+
     private static bool IsSyntaxTargetForGeneration(SyntaxNode syntaxNode)
         => syntaxNode is ClassDeclarationSyntax { AttributeLists.Count: > 0 };
 
-    private static ClassDeclarationSyntax? GetSemantricTargetForGeneration(GeneratorSyntaxContext context)
+    private static ClassDeclarationSyntax? GetSemanticTargetForGeneration(GeneratorSyntaxContext context)
     {
         var classDeclarationSyntax = (ClassDeclarationSyntax)context.Node;
         foreach (AttributeListSyntax listSyntax in classDeclarationSyntax.AttributeLists)
@@ -50,7 +65,7 @@ public sealed class RepoGenerator : IIncrementalGenerator
 
                 INamedTypeSymbol attributeContainingTypeSymbol = attributeSymbol.ContainingType;
                 string fullName = attributeContainingTypeSymbol.ToDisplayString();
-                if (fullName == "DreamBig.Repository.Cosmos.Attributes.UseFastRepoAttribute")
+                if (fullName == AttributeFullQualifiedName)
                 {
                     return classDeclarationSyntax;
                 }
@@ -68,18 +83,27 @@ public sealed class RepoGenerator : IIncrementalGenerator
 
         IEnumerable<ClassDeclarationSyntax> distinctClasses = classes.Distinct();
         List<ClassToGenerate> classesToGenerate = GetTypesToGenerate(compilation, distinctClasses, context.CancellationToken);
-        //throw new Exception(System.Text.Json.JsonSerializer.Serialize(classesToGenerate));
         if (classesToGenerate.Count > 0)
         {
-            string results = "";
-            context.AddSource("", SourceText.From(results, Encoding.UTF8));
+            using Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(RepoResourceName)
+                ?? throw new RepositoryException("Embedded resource not found");
+            using StreamReader reader = new(stream);
+            var repositoryTemplateCodes = reader.ReadToEnd();
+
+            foreach (var classToGenerate in classesToGenerate)
+            {
+                var repositoryCodes = repositoryTemplateCodes.Replace("_TheEntity_", classToGenerate.ClassName)
+                    .Replace("_TheNamespace_", classToGenerate.NamespaceName);
+                string generatedClassName = $"{classToGenerate.ClassName}Repository.g.cs";
+                context.AddSource(generatedClassName, SourceText.From(repositoryCodes, Encoding.UTF8));
+            }
         }
     }
 
     private static List<ClassToGenerate> GetTypesToGenerate(Compilation compilation, IEnumerable<ClassDeclarationSyntax> classes, CancellationToken cancellationToken)
     {
         List<ClassToGenerate> classesToGenerate = new();
-        INamedTypeSymbol? classAttribute = compilation.GetTypeByMetadataName("DreamBig.Repository.Cosmos.Attributes.UseFastRRepoAttribute");
+        INamedTypeSymbol? classAttribute = compilation.GetTypeByMetadataName(AttributeFullQualifiedName);
         if (classAttribute is null)
         {
             return classesToGenerate;
@@ -89,13 +113,13 @@ public sealed class RepoGenerator : IIncrementalGenerator
         {
             cancellationToken.ThrowIfCancellationRequested();
             SemanticModel semanticModel = compilation.GetSemanticModel(syntax.SyntaxTree);
-            if (semanticModel.GetDeclaredSymbol(syntax) is not INamedTypeSymbol classSymbol)
+            if (semanticModel.GetDeclaredSymbol(syntax, cancellationToken: cancellationToken) is not INamedTypeSymbol classSymbol)
             {
                 continue;
             }
 
             string className = classSymbol.Name;
-            string classNamespace = classSymbol.ContainingNamespace.Name;
+            string classNamespace = classSymbol.ContainingNamespace.ToDisplayString();
             classesToGenerate.Add(new(classNamespace, className));
         }
         return classesToGenerate;
