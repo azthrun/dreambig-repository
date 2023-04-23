@@ -9,7 +9,7 @@ namespace DreamBig.Repository.Cosmos;
 
 public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : IEntity
 {
-    private readonly BaseProvider cosmosProvider;
+    private readonly IProvider<CosmosClient, Database> cosmosProvider;
     private readonly string? containerName;
     private readonly ILogger<BaseRepository<TEntity>>? logger;
 
@@ -17,7 +17,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
     protected readonly Database database;
     protected readonly Container container;
 
-    public BaseRepository(BaseProvider? cosmosProvider, string? containerName = null, ILogger<BaseRepository<TEntity>>? logger = null)
+    public BaseRepository(IProvider<CosmosClient, Database>? cosmosProvider, string? containerName = null, ILogger<BaseRepository<TEntity>>? logger = null)
     {
         if (cosmosProvider is null)
         {
@@ -30,9 +30,9 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
 
         try
         {
-            cosmosClient = cosmosProvider.GetClient();
-            database = cosmosProvider.GetDatabaseAsync().Result ?? throw new RepositoryException("Unable to retrieve database");
-            container = database!.GetContainer(containerName);
+            cosmosClient = this.cosmosProvider.GetClient() ?? throw new RepositoryException("Unable to retrieve Cosmos client");
+            database = this.cosmosProvider.GetDatabaseAsync().Result ?? throw new RepositoryException("Unable to retrieve database");
+            container = database!.GetContainer(this.containerName);
         }
         catch (Exception ex) when (ex is not RepositoryException)
         {
@@ -128,7 +128,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         }
         catch (CosmosException cosEx) when (cosEx.StatusCode == System.Net.HttpStatusCode.NotFound)
         {
-            return default(TEntity);
+            return default;
         }
         catch (Exception ex)
         {
