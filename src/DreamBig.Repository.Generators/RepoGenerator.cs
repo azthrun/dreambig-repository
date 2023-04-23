@@ -12,6 +12,11 @@ public sealed class RepoGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
+        context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
+            "UseFastRepoAttribute.g.cs",
+            SourceText.From("", Encoding.UTF8)
+            ));
+
         IncrementalValuesProvider<ClassDeclarationSyntax> classDeclarations
             = context.SyntaxProvider
             .CreateSyntaxProvider(
@@ -63,7 +68,7 @@ public sealed class RepoGenerator : IIncrementalGenerator
 
         IEnumerable<ClassDeclarationSyntax> distinctClasses = classes.Distinct();
         List<ClassToGenerate> classesToGenerate = GetTypesToGenerate(compilation, distinctClasses, context.CancellationToken);
-        throw new Exception(System.Text.Json.JsonSerializer.Serialize(classesToGenerate));
+        //throw new Exception(System.Text.Json.JsonSerializer.Serialize(classesToGenerate));
         if (classesToGenerate.Count > 0)
         {
             string results = "";
