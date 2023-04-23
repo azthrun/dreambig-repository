@@ -3,19 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository", "DreamBig.Repository\DreamBig.Repository.csproj", "{A089D1F5-69C2-4379-8CA5-68BA2FABAF16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DreamBig.Repository", "DreamBig.Repository\DreamBig.Repository.csproj", "{A089D1F5-69C2-4379-8CA5-68BA2FABAF16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos", "DreamBig.Repository.Cosmos\DreamBig.Repository.Cosmos.csproj", "{7376E069-46BF-4E25-BEA6-2B3BACB162C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DreamBig.Repository.Cosmos", "DreamBig.Repository.Cosmos\DreamBig.Repository.Cosmos.csproj", "{7376E069-46BF-4E25-BEA6-2B3BACB162C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos.Generators", "DreamBig.Repository.Cosmos.Generators\DreamBig.Repository.Cosmos.Generators.csproj", "{0AFE15D5-8479-47CF-8E08-64D6878C0652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DreamBig.Repository.Cosmos.Generators", "DreamBig.Repository.Cosmos.Generators\DreamBig.Repository.Cosmos.Generators.csproj", "{0AFE15D5-8479-47CF-8E08-64D6878C0652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos.Tests", "DreamBig.Repository.Cosmos.Tests\DreamBig.Repository.Cosmos.Tests.csproj", "{4F29C4FA-E139-40CD-B83C-C571B3F69480}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A089D1F5-69C2-4379-8CA5-68BA2FABAF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +29,12 @@ Global
 		{0AFE15D5-8479-47CF-8E08-64D6878C0652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AFE15D5-8479-47CF-8E08-64D6878C0652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AFE15D5-8479-47CF-8E08-64D6878C0652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F29C4FA-E139-40CD-B83C-C571B3F69480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F29C4FA-E139-40CD-B83C-C571B3F69480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F29C4FA-E139-40CD-B83C-C571B3F69480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F29C4FA-E139-40CD-B83C-C571B3F69480}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
