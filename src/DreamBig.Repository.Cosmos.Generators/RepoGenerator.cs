@@ -120,7 +120,7 @@ public sealed class RepoGenerator : IIncrementalGenerator
 
             string className = classSymbol.Name;
             string classNamespace = classSymbol.ContainingNamespace.ToDisplayString();
-            classesToGenerate.Add(new(classNamespace, className));
+            classesToGenerate.Add(new() { ClassName = className, NamespaceName = classNamespace });
         }
         return classesToGenerate;
     }

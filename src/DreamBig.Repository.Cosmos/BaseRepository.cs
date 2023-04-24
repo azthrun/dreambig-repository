@@ -2,8 +2,10 @@ using DreamBig.Repository.Abstractions;
 using DreamBig.Repository.Exceptions;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.Azure.Cosmos.Serialization.HybridRow.Schemas;
 using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
+using System.Net;
 
 namespace DreamBig.Repository.Cosmos;
 
@@ -42,7 +44,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
 
     public virtual async Task CreateAsync(TEntity? entity)
     {
-        ArgumentNullException.ThrowIfNull(entity);
+        if (entity is null) throw new ArgumentNullException(nameof(entity));
         logger?.LogInformation("Creating document");
 
         try
@@ -57,8 +59,8 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
 
     public virtual async Task DeleteAsync(string? id, string? partitionKey)
     {
-        ArgumentException.ThrowIfNullOrEmpty(id);
-        ArgumentException.ThrowIfNullOrEmpty(partitionKey);
+        if (id is null) throw new ArgumentNullException(nameof(id));
+        if (partitionKey is null) throw new ArgumentNullException(nameof(partitionKey));
         logger?.LogInformation("Deleting document (id: {id})", id);
 
         try
@@ -117,8 +119,8 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
 
     public virtual async Task<TEntity?> GetByIdAsync(string? id, string? partitionKey)
     {
-        ArgumentException.ThrowIfNullOrEmpty(id);
-        ArgumentException.ThrowIfNullOrEmpty(partitionKey);
+        if (id is null) throw new ArgumentNullException(nameof(id));
+        if (partitionKey is null) throw new ArgumentNullException(nameof(partitionKey));
         logger?.LogInformation("Getting document with id: {id}", id);
 
         try
@@ -138,7 +140,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
 
     public virtual async Task UpdateAsync(TEntity? entity)
     {
-        ArgumentNullException.ThrowIfNull(entity);
+        if (entity is null) throw new ArgumentNullException(nameof(entity));
         logger?.LogInformation("Updating document with id: {id}", entity.Id);
 
         try

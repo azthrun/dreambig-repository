@@ -13,8 +13,8 @@ public class BaseProvider : IProvider<CosmosClient, Database>
 
     public BaseProvider(string? connectionString, string? databaseId, CosmosClientOptions? clientOptions = null, ILogger<BaseProvider>? logger = null)
     {
-        ArgumentException.ThrowIfNullOrEmpty(connectionString);
-        ArgumentException.ThrowIfNullOrEmpty(databaseId);
+        if (connectionString is null) throw new ArgumentNullException(nameof(connectionString));
+        if (databaseId is null) throw new ArgumentNullException(nameof(databaseId));
 
         this.databaseId = databaseId;
         this.logger = logger;
@@ -31,9 +31,9 @@ public class BaseProvider : IProvider<CosmosClient, Database>
 
     public BaseProvider(string? endpoint, string? primaryKey, string? databaseId, CosmosClientOptions? clientOptions = null, ILogger<BaseProvider>? logger = null)
     {
-        ArgumentException.ThrowIfNullOrEmpty(endpoint);
-        ArgumentException.ThrowIfNullOrEmpty(primaryKey);   
-        ArgumentException.ThrowIfNullOrEmpty(databaseId);
+        if (endpoint is null) throw new ArgumentNullException(nameof(endpoint));
+        if (primaryKey is null) throw new ArgumentNullException(nameof(primaryKey));
+        if (databaseId is null) throw new ArgumentNullException(nameof(databaseId));
 
         this.databaseId = databaseId;
         this.logger = logger;

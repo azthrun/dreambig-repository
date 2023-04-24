@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DreamBig.Repository.Cosmos.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamBig.Repository.Cosmos.Tests", "DreamBig.Repository.Cosmos.Tests\DreamBig.Repository.Cosmos.Tests.csproj", "{4F29C4FA-E139-40CD-B83C-C571B3F69480}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi", "SampleApi\SampleApi.csproj", "{AAF27059-D57F-43B8-8744-5E6888863241}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +35,15 @@ Global
 		{4F29C4FA-E139-40CD-B83C-C571B3F69480}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F29C4FA-E139-40CD-B83C-C571B3F69480}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F29C4FA-E139-40CD-B83C-C571B3F69480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF27059-D57F-43B8-8744-5E6888863241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF27059-D57F-43B8-8744-5E6888863241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF27059-D57F-43B8-8744-5E6888863241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF27059-D57F-43B8-8744-5E6888863241}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {571E05A4-E31A-406F-9AAA-0CA14DD1232E}
 	EndGlobalSection
 EndGlobal

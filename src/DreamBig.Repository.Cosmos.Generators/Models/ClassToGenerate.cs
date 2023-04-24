@@ -1,3 +1,7 @@
 ﻿namespace DreamBig.Repository.Cosmos.Generators.Models;
 
-public sealed record ClassToGenerate(string? NamespaceName, string? ClassName);
+public sealed class ClassToGenerate
+{
+    public string? NamespaceName { get; set; }
+    public string? ClassName { get; set; }
+}

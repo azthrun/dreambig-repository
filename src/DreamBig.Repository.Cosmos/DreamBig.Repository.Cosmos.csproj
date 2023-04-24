@@ -1,28 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 
-   <PropertyGroup>
-    <PackageId>DreamBig.Repository.Cosmos</PackageId>
-    <Version>1.0.0-alpha0002</Version>
-    <Authors>Terry Chen</Authors>
-    <Company></Company>
-    <Description>Create fast Cosmos Repository under DreamBig.Repository family that provide basic CRUD operations</Description>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageOutputPath>$(MSBuildProjectDirectory)\nuget</PackageOutputPath>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup> 
+	<PropertyGroup>
+		<PackageId>DreamBig.Repository.Cosmos</PackageId>
+		<Version>1.0.0-alpha0005</Version>
+		<Authors>Terry Chen</Authors>
+		<Company></Company>
+		<Description>Create fast Cosmos Repository under DreamBig.Repository family that provide basic CRUD operations</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageOutputPath>$(MSBuildProjectDirectory)\nuget</PackageOutputPath>
+		<IncludeSymbols>true</IncludeSymbols>
+		<IncludeSource>true</IncludeSource>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DreamBig.Repository" Version="1.0.0-alpha0004" />
-    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.32.3" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="DreamBig.Repository" Version="1.0.0-alpha0006" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.32.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+	</ItemGroup>
 </Project>
