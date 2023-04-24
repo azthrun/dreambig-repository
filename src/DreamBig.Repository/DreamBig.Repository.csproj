@@ -9,15 +9,12 @@
 
 	<PropertyGroup>
 		<PackageId>DreamBig.Repository</PackageId>
-		<Version>1.0.0-alpha0006</Version>
+		<Version>1.0.1-alpha0001</Version>
 		<Authors>Terry Chen</Authors>
 		<Company></Company>
 		<Description>Core package for DreamBig.Repository family</Description>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageOutputPath>$(MSBuildProjectDirectory)\nuget</PackageOutputPath>
-		<IncludeSymbols>true</IncludeSymbols>
-		<IncludeSource>true</IncludeSource>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 </Project>

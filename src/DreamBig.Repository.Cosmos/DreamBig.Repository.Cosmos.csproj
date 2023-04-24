@@ -9,21 +9,18 @@
 
 	<PropertyGroup>
 		<PackageId>DreamBig.Repository.Cosmos</PackageId>
-		<Version>1.0.0-alpha0005</Version>
+		<Version>1.0.1-alpha0001</Version>
 		<Authors>Terry Chen</Authors>
 		<Company></Company>
 		<Description>Create fast Cosmos Repository under DreamBig.Repository family that provide basic CRUD operations</Description>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageOutputPath>$(MSBuildProjectDirectory)\nuget</PackageOutputPath>
-		<IncludeSymbols>true</IncludeSymbols>
-		<IncludeSource>true</IncludeSource>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DreamBig.Repository" Version="1.0.0-alpha0006" />
-		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.32.3" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="DreamBig.Repository" Version="1.0.1-alpha0001" TargetFramework="netstandard2.0" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.32.3" TargetFramework="netstandard2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" TargetFramework="netstandard2.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" TargetFramework="netstandard2.0" />
 	</ItemGroup>
 </Project>

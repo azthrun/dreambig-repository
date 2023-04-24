@@ -3,7 +3,7 @@ using DreamBig.Repository.Cosmos;
 
 namespace SampleApi.Models;
 
-//[UseRepo]
+[UseRepo]
 public sealed class Activity : IEntity
 {
     public string? Id { get; set; }

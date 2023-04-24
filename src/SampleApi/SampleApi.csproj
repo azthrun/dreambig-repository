@@ -7,9 +7,11 @@
 		<UserSecretsId>5ba91653-c6e8-406d-8e7c-6fb118e80549</UserSecretsId>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
 	<ItemGroup>
-		<PackageReference Include="DreamBig.Repository.Cosmos" Version="1.0.0-alpha0005" />
-		<PackageReference Include="DreamBig.Repository.Cosmos.Generators" Version="1.0.0-alpha0007" />
+		<PackageReference Include="DreamBig.Repository.Cosmos" Version="1.0.1-alpha0001" />
+		<PackageReference Include="DreamBig.Repository.Cosmos.Generators" Version="1.0.1-alpha0001" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>
