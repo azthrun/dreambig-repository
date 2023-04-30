@@ -10,8 +10,8 @@
 	<PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
 	<PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
 	<ItemGroup>
-		<PackageReference Include="DreamBig.Repository.Cosmos" Version="1.0.1-alpha0001" />
-		<PackageReference Include="DreamBig.Repository.Cosmos.Generators" Version="1.0.1-alpha0001" />
+		<PackageReference Include="DreamBig.Repository" Version="1.0.1-alpha0001" />
+		<PackageReference Include="DreamBig.Repository.Cosmos" Version="1.0.1-alpha0006" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>

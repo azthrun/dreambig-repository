@@ -1,5 +1,5 @@
 ﻿using DreamBig.Repository.Abstractions;
-using DreamBig.Repository.Cosmos;
+using DreamBig.Repository.Cosmos.Attributes;
 
 namespace SampleApi.Models;
 

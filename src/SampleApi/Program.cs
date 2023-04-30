@@ -13,6 +13,7 @@ builder.Services.UseCosmos(connStr, databaseId);
 
 // Manual adding repositories
 //builder.Services.AddScoped<IRepository<Kid>, KidRepositoryManual>();
+//builder.Services.AddScoped<IRepository<Activity>, ActivityRepository>();
 
 // Automatic adding all repositories
 builder.Services.AddCosmosRepositories(Assembly.GetExecutingAssembly());

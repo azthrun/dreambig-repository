@@ -1,4 +1,4 @@
-﻿using DreamBig.Repository.Cosmos.Generators.Models;
+﻿using DreamBig.Repository.Cosmos.Models;
 using DreamBig.Repository.Exceptions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -11,8 +11,8 @@ namespace DreamBig.Repository.Cosmos.Generators;
 [Generator]
 public sealed class RepoGenerator : IIncrementalGenerator
 {
-    private const string AttributeResourceName = "DreamBig.Repository.Cosmos.Generators.Templates.UseRepoAttribute.cs";
-    private const string RepoResourceName = "DreamBig.Repository.Cosmos.Generators.Templates._TheEntity_Repository.cs";
+    private const string AttributeResourceName = "DreamBig.Repository.Cosmos.Templates.UseRepoAttribute.cs";
+    private const string RepoResourceName = "DreamBig.Repository.Cosmos.Templates._TheEntity_Repository.cs";
     private const string AttributeFullQualifiedName = "DreamBig.Repository.Cosmos.Attributes.UseRepoAttribute";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)

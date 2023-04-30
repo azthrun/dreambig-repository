@@ -4,14 +4,15 @@
 
 using DreamBig.Repository.Abstractions;
 using DreamBig.Repository.Cosmos;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 
 namespace SomeNamespace.Models;
 
 [global::System.CodeDom.Compiler.GeneratedCodeAttribute("DreamBig.Repository.Cosmos", "1.0.0")]
-public partial class UserRepository<T> : BaseRepository<T> where T : IEntity
+public partial class UserRepository : BaseRepository<User>
 {
-    public UserRepository(BaseProvider? cosmosProvider, string? containerName = null, ILogger<UserRepository<T>>? logger = null) : base(cosmosProvider, containerName, logger)
+    public UserRepository(IProvider<CosmosClient, Database>? cosmosProvider, string? containerName = null, ILogger<UserRepository>? logger = null) : base(cosmosProvider, containerName, logger)
     {
     }
 }

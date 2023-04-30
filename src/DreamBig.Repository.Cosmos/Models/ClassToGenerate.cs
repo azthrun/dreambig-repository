@@ -1,4 +1,4 @@
-﻿namespace DreamBig.Repository.Cosmos.Generators.Models;
+﻿namespace DreamBig.Repository.Cosmos.Models;
 
 public sealed class ClassToGenerate
 {

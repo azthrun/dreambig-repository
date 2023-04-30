@@ -5,7 +5,7 @@ using SampleApi.Models;
 namespace SampleApi.Controllers;
 
 [ApiController]
-[Route("kids")]
+[Route("[controller]")]
 public class KidController : ControllerBase
 {
     private readonly IRepository<Kid> kidRepository;
